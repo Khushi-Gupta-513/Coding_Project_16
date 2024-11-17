@@ -14,7 +14,7 @@ function ProductList({ products }) {
 
       {/* Mapping over the products array to render a ProductItem component for each product */}
       {products.map((product) => (
-        // Each ProductItem component is passed a unique key (product.id) and the product data as props
+        // Each ProductItem component is passed a unique key (product.id) and props for product data
         <ProductItem key={product.id} product={product} />
       ))}
     </div>
