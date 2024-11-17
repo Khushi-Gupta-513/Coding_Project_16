@@ -9,9 +9,21 @@ function AddProductForm({ addProduct }) {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
-    // Temporary alert to display entered values (data not yet passed to App)
-    alert(`Product added: ${name}, ${price}, ${description}`);
-    // Reset all form fields to empty values after submission
+
+    // Validate that all fields are filled before submitting
+    if (!name || !price || !description) {
+      alert('Please fill in all fields!'); // Display an alert if any field is empty
+      return; // Stop further execution of the function
+    }
+
+    // Use the addProduct function passed as a prop to add the new product to the list
+    addProduct({ 
+      name, 
+      price: parseFloat(price), // Convert the price input to a float
+      description 
+    });
+
+    // Reset all form fields to empty values after successfully adding the product
     setName('');
     setPrice('');
     setDescription('');
